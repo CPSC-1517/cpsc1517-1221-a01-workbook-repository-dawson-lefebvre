@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NHLSystemClassLibrary
 {
-    internal class Team
+    public class Team
     {
         string _name;
         string _city;
@@ -24,13 +24,17 @@ namespace NHLSystemClassLibrary
             }
             set
             {
-                if (value.All(char.IsLetter))
+                if ((value.All(char.IsLetter) || value.Any(char.IsWhiteSpace)) && !string.IsNullOrWhiteSpace(value))
                 {
                     _name = value;
                 }
+                else if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException("Name cannot be blank");
+                }
                 else
                 {
-                    throw new Exception("Name muts only contain letters");
+                    throw new Exception("Name must contain only letters and spaces");
                 }
             }
         }
@@ -62,13 +66,13 @@ namespace NHLSystemClassLibrary
             }
             set
             {
-                if(value == null)
+                if(string.IsNullOrWhiteSpace(value))
                 {
-                    throw new Exception("Cannot be blank");
+                    throw new ArgumentNullException(nameof(value), "Name cannot be blank");
                 }
                 else
                 {
-                    _arena = value;
+                    _arena = value.Trim();
                 }
             }
         }
@@ -80,6 +84,11 @@ namespace NHLSystemClassLibrary
             Name = name;
             City = city;
             Arena = arena;
+        }
+
+        public Team(string name)
+        {
+            Name = name;
         }
     }
 }

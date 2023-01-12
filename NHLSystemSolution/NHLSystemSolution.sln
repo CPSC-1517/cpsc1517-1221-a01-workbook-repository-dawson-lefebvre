@@ -5,6 +5,10 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHLSystemClassLibrary", "NHLSystemClassLibrary\NHLSystemClassLibrary.csproj", "{1EFA018F-31D5-4EC8-9020-3E1FF70AABE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHLConsoleApp", "NHLConsoleApp\NHLConsoleApp.csproj", "{6500FDD0-8425-41A1-AD45-F267CF6EB79D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHLSystemTestProject", "NHLSystemTestProject\NHLSystemTestProject.csproj", "{CE43F536-4AB5-47D4-AC45-7CF1DB9F0B89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1EFA018F-31D5-4EC8-9020-3E1FF70AABE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EFA018F-31D5-4EC8-9020-3E1FF70AABE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EFA018F-31D5-4EC8-9020-3E1FF70AABE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6500FDD0-8425-41A1-AD45-F267CF6EB79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6500FDD0-8425-41A1-AD45-F267CF6EB79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6500FDD0-8425-41A1-AD45-F267CF6EB79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6500FDD0-8425-41A1-AD45-F267CF6EB79D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE43F536-4AB5-47D4-AC45-7CF1DB9F0B89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE43F536-4AB5-47D4-AC45-7CF1DB9F0B89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE43F536-4AB5-47D4-AC45-7CF1DB9F0B89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE43F536-4AB5-47D4-AC45-7CF1DB9F0B89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
