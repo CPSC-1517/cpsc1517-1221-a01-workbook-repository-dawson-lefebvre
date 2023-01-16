@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace NHLSystemClassLibrary
 {
-    internal class Position
+    public enum Position
     {
+        C,
+        LW,
+        RW,
+        D,
+        G
     }
 }
