@@ -47,13 +47,20 @@ namespace NHLSystemClassLibrary
             }
             set
             {
-                if(value.Length >= 3)
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    _city = value;
+                    throw new ArgumentNullException("City can not be blank");
                 }
                 else
                 {
-                    throw new Exception("City must be longer than 2 characters");
+                    if (value.Length >= 3)
+                    {
+                        _city = value;
+                    }
+                    else
+                    {
+                        throw new Exception("City must be longer than 2 characters");
+                    }
                 }
             }
         }
@@ -68,7 +75,7 @@ namespace NHLSystemClassLibrary
             {
                 if(string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException(nameof(value), "Name cannot be blank");
+                    throw new ArgumentNullException(nameof(value), "Value cannot be null.");
                 }
                 else
                 {
