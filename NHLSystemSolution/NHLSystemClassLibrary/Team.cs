@@ -11,6 +11,7 @@ namespace NHLSystemClassLibrary
         string _name;
         string _city;
         string _arena;
+        List<Player> Players;
 
         public Conference Conference { get; set; }
 
@@ -84,6 +85,9 @@ namespace NHLSystemClassLibrary
             }
         }
 
+
+        //CONSTRUCTORS
+
         public Team(Conference conference, Division division, string name, string city, string arena)
         {
             Conference = conference;
@@ -97,5 +101,20 @@ namespace NHLSystemClassLibrary
         {
             Name = name;
         }
+
+        //METHODS
+
+        public void AddPlayer(int playerNo, string name, Position position, int gamesPlayed, int goals, int assists)
+        {
+            foreach(Player p in Players)
+            {
+                if(name == p.Name)
+                {
+                    throw new ArgumentException(nameof(name), "Player is already on team");
+                }
+            }
+            Players.Add(new Player(playerNo, name, position, gamesPlayed, goals, assists));
+        }
+
     }
 }
