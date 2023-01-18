@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NHLSystemClassLibrary
 {
-    internal class Player
+    public class Player
     {
         private int _playerNo, _gamesPlayed, _goals, _assists;
         private string _name;
@@ -26,7 +26,7 @@ namespace NHLSystemClassLibrary
                 }
                 else if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException("Name cannot be blank");
+                    throw new ArgumentNullException(nameof(value),"Name cannot be blank");
                 }
                 else
                 {
@@ -124,5 +124,9 @@ namespace NHLSystemClassLibrary
             _assists++;
         }
 
+        public void AddGamesPlayed()
+        {
+            _gamesPlayed++;
+        }
     }
 }
