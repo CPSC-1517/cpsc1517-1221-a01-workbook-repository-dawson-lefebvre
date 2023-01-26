@@ -14,12 +14,17 @@ namespace NHLSystemClassLibrary
             List<CanadianIncomeTaxData> dataList = new List<CanadianIncomeTaxData>();
             foreach (String line in lines)
             {
+                CanadianIncomeTaxData data = new CanadianIncomeTaxData();
                 string[] lineSplit = line.Split(",");
-                string regionAb = lineSplit[0];
-                string regionName = lineSplit[1];
-                int taxYear = lineSplit[2];
-
-                dataList.Add(new CanadianIncomeTaxData());
+                data.RegionAbbreviation = lineSplit[0];
+                data.RegionName = lineSplit[1];
+                data.TaxYear = int.Parse(lineSplit[2]);
+                data.StartingIncome = decimal.Parse(lineSplit[4]);
+                data.EndingIncome = decimal.Parse(lineSplit[5]);
+                data.TaxRate = double.Parse(lineSplit[6]);
+                data.BaseTaxAmount = decimal.Parse(lineSplit[7]);
+                
+                dataList.Add(data);
             }
             return dataList;
         }
