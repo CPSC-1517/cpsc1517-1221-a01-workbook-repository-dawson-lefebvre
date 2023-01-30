@@ -137,5 +137,10 @@ namespace NHLSystemClassLibrary
         {
             _gamesPlayed++;
         }
+
+        public override string ToString()
+        {
+            return $"{PlayerNo},{Name},{Position},{GamesPlayed},{Goals},{Assists}";
+        }
     }
 }
