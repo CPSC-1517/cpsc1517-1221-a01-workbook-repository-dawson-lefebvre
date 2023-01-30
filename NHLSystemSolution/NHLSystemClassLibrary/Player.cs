@@ -103,6 +103,7 @@ namespace NHLSystemClassLibrary
             get { return Goals + Assists; }
         }
 
+        //CONTRUCTORS
         public Player(int playerNo, string name, Position position, int gamesPlayed, int goals, int assists)
         {
             PlayerNo = playerNo;
@@ -111,6 +112,14 @@ namespace NHLSystemClassLibrary
             GamesPlayed = gamesPlayed;
             Goals = goals;
             Assists = assists;
+        }
+
+        public Player(int playerNo, string name, Position position, int gamesPlayed)
+        {
+            PlayerNo = playerNo;
+            Name = name;
+            Position = position;
+            GamesPlayed = gamesPlayed;
         }
 
         //METHODS

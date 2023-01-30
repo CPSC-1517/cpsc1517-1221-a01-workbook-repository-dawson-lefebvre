@@ -11,7 +11,7 @@ namespace NHLSystemClassLibrary
         string _name;
         string _city;
         string _arena;
-        List<Player> Players;
+        
 
         public Conference Conference { get; set; }
 
@@ -95,6 +95,7 @@ namespace NHLSystemClassLibrary
             Name = name;
             City = city;
             Arena = arena;
+            Players = new List<Player>();
         }
 
         public Team(string name)
@@ -102,18 +103,27 @@ namespace NHLSystemClassLibrary
             Name = name;
         }
 
+        public List<Player> Players { get; private set; } 
         //METHODS
 
-        public void AddPlayer(int playerNo, string name, Position position, int gamesPlayed, int goals, int assists)
+        public void AddPlayer(Player currentPlayer)
         {
+            if(currentPlayer == null)
+            {
+                throw new ArgumentNullException(nameof(AddPlayer),"Player cannot be null");
+            }
             foreach(Player p in Players)
             {
-                if(name == p.Name)
+                if (currentPlayer.Name == p.Name)
                 {
-                    throw new ArgumentException(nameof(name), "Player is already on team");
+                    throw new ArgumentException(nameof(AddPlayer), "Player already on team");
+                }
+
+                if (currentPlayer.PlayerNo == p.PlayerNo)
+                {
+                    throw new ArgumentException(nameof(AddPlayer), "Player already on team");
                 }
             }
-            Players.Add(new Player(playerNo, name, position, gamesPlayed, goals, assists));
         }
 
     }
