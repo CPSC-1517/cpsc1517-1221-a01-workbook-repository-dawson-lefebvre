@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace NHLSystemClassLibrary
 {
@@ -26,7 +27,7 @@ namespace NHLSystemClassLibrary
                 }
                 else if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentNullException(nameof(value),"Name cannot be blank");
+                    throw new ArgumentNullException(nameof(value), "Name cannot be blank");
                 }
                 else
                 {
@@ -38,7 +39,7 @@ namespace NHLSystemClassLibrary
         public int PlayerNo
         {
             get { return _playerNo; }
-            set 
+            set
             {
                 if (value <= 0 || value > 98)
                 {
@@ -122,6 +123,8 @@ namespace NHLSystemClassLibrary
             GamesPlayed = gamesPlayed;
         }
 
+        public Player() { }
+
         //METHODS
         public void AddGoal()
         {
@@ -140,7 +143,58 @@ namespace NHLSystemClassLibrary
 
         public override string ToString()
         {
+            // Return a CSV list of the properties used by the constructor
             return $"{PlayerNo},{Name},{Position},{GamesPlayed},{Goals},{Assists}";
+        }
+
+        public static Player Parse(string csvLine)
+        {
+            const char Delimiter = ',';
+            const int ExpectedColumnCount = 6;
+            string[] tokens = csvLine.Split(Delimiter);
+            // Verify that the length of the array 
+            if (tokens.Length != ExpectedColumnCount)
+            {
+                throw new FormatException($"CSV line must contain exactly {ExpectedColumnCount} values.");
+
+            }
+
+            int playerNo = int.Parse(tokens[0]);
+            string name = tokens[1];
+            Position position = Enum.Parse<Position>(tokens[2]);
+            int gamesPlayed = int.Parse(tokens[3]);
+            int goals = int.Parse(tokens[4]);
+            int assists = int.Parse(tokens[5]);
+
+            return new Player(playerNo, name, position, gamesPlayed, goals, assists);// new Player();
+        }
+
+        public static bool TryParse(string csvLine, out Player currentPlayer)
+        {
+            bool result = false;
+            const char Delimiter = ',';
+            const int ExpectedColumnCount = 6;
+            string[] tokens = csvLine.Split(Delimiter);
+            // Verify that the length of the array 
+            if (tokens.Length != ExpectedColumnCount)
+            {
+                throw new FormatException($"CSV line must contain exactly {ExpectedColumnCount} values.");
+            }
+            
+            try
+            {
+                currentPlayer = Player.Parse(csvLine);
+                result = true;
+            }
+            catch(FormatException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Player TryParse failed with exception {ex.Message}");
+            }
+            return result;
         }
     }
 }
