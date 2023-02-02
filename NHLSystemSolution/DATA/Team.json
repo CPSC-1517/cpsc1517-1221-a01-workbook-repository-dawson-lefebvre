@@ -1,0 +1,54 @@
+{
+  "Conference": 1,
+  "Division": 3,
+  "Name": "Oilers",
+  "City": "Edmonton",
+  "Arena": "Rogers Place",
+  "Players": [
+    {
+      "Position": 0,
+      "Name": "Conner McDavid",
+      "PlayerNo": 97,
+      "GamesPlayed": 46,
+      "Goals": 40,
+      "Assists": 35,
+      "Points": 75
+    },
+    {
+      "Position": 0,
+      "Name": "Ryan Nugent-Hopkins",
+      "PlayerNo": 93,
+      "GamesPlayed": 42,
+      "Goals": 21,
+      "Assists": 15,
+      "Points": 36
+    },
+    {
+      "Position": 1,
+      "Name": "Zach Hyman",
+      "PlayerNo": 18,
+      "GamesPlayed": 49,
+      "Goals": 26,
+      "Assists": 34,
+      "Points": 60
+    },
+    {
+      "Position": 3,
+      "Name": "Darnell Nurse",
+      "PlayerNo": 25,
+      "GamesPlayed": 50,
+      "Goals": 6,
+      "Assists": 19,
+      "Points": 25
+    },
+    {
+      "Position": 1,
+      "Name": "Evander Kane",
+      "PlayerNo": 91,
+      "GamesPlayed": 18,
+      "Goals": 6,
+      "Assists": 8,
+      "Points": 14
+    }
+  ]
+}

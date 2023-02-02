@@ -98,9 +98,23 @@ namespace NHLSystemClassLibrary
             Players = new List<Player>();
         }
 
+        public Team(Conference conference, Division division, string name, string city, string arena, List<Player> players)
+        {
+            Conference = conference;
+            Division = division;
+            Name = name;
+            City = city;
+            Arena = arena;
+            Players = players;
+        }
         public Team(string name)
         {
             Name = name;
+        }
+
+        public Team()
+        {
+
         }
 
         public List<Player> Players { get; private set; } 
