@@ -1,0 +1,72 @@
+﻿@page
+@model RazorPagesDemo.Pages.MultiplicationTableModel
+@{
+}
+<h1>Multiplication Table</h1>
+
+<form method="post">
+    <div class="row">
+        <div class="col">
+            <input type="number" min="1" max="100" class="form-control" placeholder="Rows" aria-label="DigitRow" asp-for="DigitRow">
+        </div>
+        <div class="col">
+            <input type="number" min="1" max="100" class="form-control" placeholder="Columns" aria-label="DigitColumn" asp-for="DigitColumn">
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-primary" asp-page-handler="Multiply">Generate Multiplication Table</button>
+        <button type="submit" class="btn btn-success" asp-page-handler="Add">Generate Addition Table</button>
+        <button type="submit" class="btn btn-info" asp-page-handler="Subtract">Generate Subtraction Table</button>
+    </div>
+</form>
+
+@if (Model.Type != null)
+{
+    <table class="table table-bordered">
+
+        <tr>
+            <td> </td>
+            @for (int currentRow = 1; currentRow <= Model.DigitRow; currentRow++)
+            {
+                <td style="background-color: forestgreen;">@(currentRow)</td>
+            }
+        </tr>
+        @for (int currentRow = 1; currentRow <= Model.DigitRow; currentRow++)
+        {
+            <tr>
+                <td style="background-color: forestgreen;">@(currentRow)</td>
+                @for (int currentColumn = 1; currentColumn <= Model.DigitRow; currentColumn++)
+                {
+                    @if(currentColumn == currentRow)
+                    {
+                        @if(Model.Type == Models.TableType.Multiply){
+                            <td style="background-color: orange;">@(currentRow * currentColumn)</td>
+                        }
+                        else if (Model.Type == Models.TableType.Add)
+                        {
+                            <td style="background-color: orange;">@(currentRow + currentColumn)</td>
+                        }
+                        else{
+                            <td style="background-color: orange;">@(currentRow - currentColumn)</td>
+                        }
+                        
+                    }
+                    else{
+                        @if (Model.Type == Models.TableType.Multiply)
+                        {
+                            <td>@(currentRow * currentColumn)</td>
+                        }
+                        else if (Model.Type == Models.TableType.Add)
+                        {
+                            <td>@(currentRow + currentColumn)</td>
+                        }
+                       else
+                        {
+                            <td>@(currentRow - currentColumn)</td>
+                        }
+                    }
+                }
+            </tr>
+        }
+    </table>
+}
