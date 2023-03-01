@@ -1,0 +1,10 @@
+﻿@page
+@model NhlWebApp.Pages.NHLPlayersModel
+@{
+}
+<div>
+    @for (int index = 0; index < Model.Players.Length; index++)
+    {
+        <p>@(Model.DisplayPlayer(index))</p>
+    }
+</div>
